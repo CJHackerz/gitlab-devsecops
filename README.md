@@ -44,3 +44,21 @@ You can also enable or disable scans using variables
 ```
 
 Create new branch on your project, do some work there. After finishing open the merge request it will run the AppSec pipeline. If you are using containers in your project make sure that your build stages push the images to GitLab's container registry for scanning. You can also do that by mofiying this template to include a container build stage tag it like `:devsecops-build`
+
+![Job run on merge](/Docs/Img/screenshot-1.png)
+
+![Pipeline Breakdown](/Docs/Img/screenshot-2.png)
+
+The template for Nuclei scan can be copied at the root of the project directory. By default it is for Owasp Juice Shop project for scanning SQLInjection at login page to perform auth bypass for admin user.
+
+![DAST Setup](/Docs/Img/screenshot-0.png)
+
+![Alt text](/Docs/Img/screenshot-3.png)
+
+Reports can be downloaded from uploaded artifacts.
+
+![Alt text](/Docs/Img/screenshot-4.png)
+
+## Remarks
+
+That's it. This is simple straight forward modular AppSec pipeline template for GitLab which can be expanded into many ways to suit your orgainzation's or project needs.
