@@ -11,3 +11,5 @@ dast:
  artifacts:
    paths:
      - nuclei-vuln-scan.json
+  rules:
+    - if: APPSEC_PIPELINE_DAST == "true"

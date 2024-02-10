@@ -11,3 +11,5 @@ sast:
   artifacts:
     paths:
       - trivy.json
+  rules:
+    - if: APPSEC_PIPELINE_SAST == "true"
