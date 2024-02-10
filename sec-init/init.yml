@@ -1,0 +1,11 @@
+stages:
+  - appsec-scan
+
+workflow:
+  rules:
+    - when: always
+
+include:
+  - local: 'DAST/nucleiscan.yml'
+  - local: 'SAST/containerscan.yml'
+  

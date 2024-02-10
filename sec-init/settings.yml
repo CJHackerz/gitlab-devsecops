@@ -1,0 +1,4 @@
+variables:
+  APPSEC_PIPELINE_SAST: "true"
+  APPSEC_PIPELINE_DAST: "true"
+  DAST_TEST_URL: "please-set"

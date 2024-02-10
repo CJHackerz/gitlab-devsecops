@@ -1,0 +1,13 @@
+dast:
+ stage: appsec-scan
+ image:
+   name: "projectdiscovery/nuclei:latest"
+ tags:
+   - docker-staging
+ script:
+   - echo "Starting Nuclei Scans at URL ${DAST_TEST_HOST}"
+   - ls -al
+   - nuclei -t dast-detect.yaml -u http://$DAST_TEST_HOST -json -o nuclei-vuln-scan.json
+ artifacts:
+   paths:
+     - nuclei-vuln-scan.json

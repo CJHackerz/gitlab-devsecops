@@ -1,0 +1,13 @@
+sast:
+  stage: appsec-scan
+  image:
+    name: aquasec/trivy
+  tags: docker-staging 
+  
+  script:
+    - echo "Starting container scans..."
+    - trivy image ${CI_REGISTRY_IMAGE}:latest --username gitlab-ci-token --password $CI_JOB_TOKEN --format json > trivy.json
+  allow_failure: true
+  artifacts:
+    paths:
+      - trivy.json

